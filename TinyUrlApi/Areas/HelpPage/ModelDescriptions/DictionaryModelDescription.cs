@@ -1,0 +1,6 @@
+namespace TinyUrlApi.Areas.HelpPage.ModelDescriptions
+{
+    public class DictionaryModelDescription : KeyValuePairModelDescription
+    {
+    }
+}
