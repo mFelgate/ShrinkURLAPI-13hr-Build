@@ -5,17 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using URLDirectoryRepo;
 using System.Web;
+using TinyUrlApi.Mapper;
 
 namespace TinyURL.service
 {
     public class TinyUrlService
     {
+
+        public Mapper mapper = new Mapper();
         //instantiate the repo
         private URLRepo repo = new URLRepo();
         public UrlModel getUrl(string tinyUrl)
         {
             var urlEntity = repo.getUrl(EncodeInputs(tinyUrl));
-            return urlMapper(urlEntity);
+            return mapper.urlMapper(urlEntity);
         }
 
         //add the url given through the controller
@@ -26,28 +29,14 @@ namespace TinyURL.service
             var shortUrl = this.makeShortUrl(urlEntity.id);
             urlEntity = repo.addShortUrl(urlEntity.id, shortUrl);
             
-            return urlMapper(urlEntity);
+            return mapper.urlMapper(urlEntity);
         }
-        // map the database object to the model and decode it
-        private UrlModel urlMapper(url urlEntity)
-        {
-            return new UrlModel()
-            {
-                fullUrl = DecodeInputs(urlEntity.longUrl),
-                tinyUrl = DecodeInputs(urlEntity.shortUrl)
-            };
-        }
-        
+
         private string EncodeInputs(string input)
         {
             return HttpUtility.UrlEncode(input);
 
         }
-        private string DecodeInputs(string input)
-        {
-            return HttpUtility.UrlDecode(input);
-        }
-
         // use the char map to make a string
         //algorithm found at https://www.geeksforgeeks.org/how-to-design-a-tiny-url-or-url-shortener/
         private string makeShortUrl(int id)

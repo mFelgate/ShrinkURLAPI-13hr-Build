@@ -170,6 +170,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TinyUrlController.cs" />
+    <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="Models\urls.cs" />
     <Compile Include="Services\TinyUrlService.cs" />
     <Compile Include="Global.asax.cs">
