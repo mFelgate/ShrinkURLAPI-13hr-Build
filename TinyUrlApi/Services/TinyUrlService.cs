@@ -12,8 +12,7 @@ namespace TinyURL.service
     public class TinyUrlService
     {
 
-        public Mapper mapper = new Mapper();
-        //instantiate the repo
+        private Mapper mapper = new Mapper();
         private URLRepo repo = new URLRepo();
         public UrlModel getUrl(string tinyUrl)
         {
