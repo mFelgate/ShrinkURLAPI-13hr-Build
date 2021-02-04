@@ -12,7 +12,7 @@ namespace URLDirectoryRepo
     using System;
     using System.Collections.Generic;
     
-    public partial class url
+    public partial class Url
     {
         public int id { get; set; }
         public string shortUrl { get; set; }

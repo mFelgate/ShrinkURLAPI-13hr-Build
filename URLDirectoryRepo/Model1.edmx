@@ -4,43 +4,42 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="URLDirectoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="urls">
+    <Schema Namespace="TinyURLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Urls">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="shortUrl" Type="varchar" MaxLength="30" />
-          <Property Name="longUrl" Type="varchar" MaxLength="2400" Nullable="false" />
+          <Property Name="shortUrl" Type="nvarchar" MaxLength="25" />
+          <Property Name="longUrl" Type="nvarchar" MaxLength="2400" />
         </EntityType>
-        <EntityContainer Name="URLDirectoryModelStoreContainer">
-          <EntitySet Name="urls" EntityType="Self.urls" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="TinyURLModelStoreContainer">
+          <EntitySet Name="Urls" EntityType="Self.Urls" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="URLDirectoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="url">
+      <Schema Namespace="TinyURLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Url">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="shortUrl" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="longUrl" Type="String" MaxLength="2400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shortUrl" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="longUrl" Type="String" MaxLength="2400" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="URLDirectoryEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="urls" EntityType="Self.url" />
+        <EntityContainer Name="TinyURLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Urls" EntityType="Self.Url" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="URLDirectoryModelStoreContainer" CdmEntityContainer="URLDirectoryEntities">
-          <EntitySetMapping Name="urls">
-            <EntityTypeMapping TypeName="URLDirectoryModel.url">
-              <MappingFragment StoreEntitySet="urls">
+        <EntityContainerMapping StorageEntityContainer="TinyURLModelStoreContainer" CdmEntityContainer="TinyURLEntities">
+          <EntitySetMapping Name="Urls">
+            <EntityTypeMapping TypeName="TinyURLModel.Url">
+              <MappingFragment StoreEntitySet="Urls">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="shortUrl" ColumnName="shortUrl" />
                 <ScalarProperty Name="longUrl" ColumnName="longUrl" />

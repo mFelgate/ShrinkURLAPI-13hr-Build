@@ -10,7 +10,7 @@ using TinyURL.service;
 
 namespace TinyURL.Controllers
 {
-    [EnableCors(origins: "https://shrinkurl.azurewebsites.net", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TinyUrlController : ApiController
     {
         private TinyUrlService service = new TinyUrlService();

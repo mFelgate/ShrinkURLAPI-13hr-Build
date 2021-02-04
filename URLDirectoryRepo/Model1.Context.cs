@@ -13,10 +13,10 @@ namespace URLDirectoryRepo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class URLDirectoryEntities : DbContext
+    public partial class TinyURLEntities : DbContext
     {
-        public URLDirectoryEntities()
-            : base("name=URLDirectoryEntities")
+        public TinyURLEntities()
+            : base("name=TinyURLEntities")
         {
         }
     
@@ -25,6 +25,6 @@ namespace URLDirectoryRepo
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<url> urls { get; set; }
+        public virtual DbSet<Url> Urls { get; set; }
     }
 }

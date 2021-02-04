@@ -9,26 +9,26 @@ namespace URLDirectoryRepo
 {
     public class URLRepo
     {
-        public DbContext ctx = new URLDirectoryEntities();
+        public DbContext ctx = new TinyURLEntities();
 
         // Return a full url for a given short url
-        public url getUrl(string shortUrl)
+        public Url getUrl(string shortUrl)
         {
-            var tinyurl = new url();
+            var tinyurl = new Url();
             using (ctx)
             {
-                var tinyurls = ctx.Set<url>();
+                var tinyurls = ctx.Set<Url>();
                 tinyurl = tinyurls.Where(x => shortUrl == x.shortUrl).FirstOrDefault();
             }
             return tinyurl;
         }
         // see if the url is already added, and if so return that object
         // other wise create a new database object for that url
-        public url addUrl(string fullUrl)
+        public Url addUrl(string fullUrl)
         {
-            var tinyurl = new url();
+            var tinyurl = new Url();
             
-            var tinyurls = ctx.Set<url>();
+            var tinyurls = ctx.Set<Url>();
             var found = tinyurls.Any(x => fullUrl == x.longUrl);
             if (!found)
             {
@@ -41,10 +41,10 @@ namespace URLDirectoryRepo
             return tinyurl;
         }
         //add a short url to a entity just added to the databse
-        public url addShortUrl(int id, string shortUrl)
+        public Url addShortUrl(int id, string shortUrl)
         {
-            var tinyurl = new url();
-            var tinyurls = ctx.Set<url>();
+            var tinyurl = new Url();
+            var tinyurls = ctx.Set<Url>();
             tinyurl = tinyurls.Find(id);
             tinyurl.shortUrl = shortUrl;
             ctx.SaveChanges();

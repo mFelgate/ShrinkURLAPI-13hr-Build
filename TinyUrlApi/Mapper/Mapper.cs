@@ -9,7 +9,7 @@ namespace TinyUrlApi.Mapper
 {
     public class Mapper
     {
-        public UrlModel urlMapper(url urlEntity)
+        public UrlModel urlMapper(Url urlEntity)
         {
             return new UrlModel()
             {
